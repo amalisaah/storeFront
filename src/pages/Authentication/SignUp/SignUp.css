@@ -1,0 +1,101 @@
+/* *{
+    border:1px solid red;
+} */
+
+
+body {
+    font-size: 1rem;
+    padding: 0;
+    margin: 0;
+}
+.signPic {
+    border-radius: 0 40px 40px 0;
+    width: 44%;
+    background-image: url('../resources/images/Desktop1.jpg');
+}
+.signLogo {
+   
+    line-height: 89.66px;
+
+}
+.signUp {
+    width: 33%; 
+}
+.signUp h1 {
+
+    margin-bottom: 4.6%;
+    
+}
+form>div {
+    width: 100%;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 3%;
+}
+form .inputBox {
+    /* width: 0%; */
+    background-color: white;
+    border-radius: 8px;
+    /* /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: start;  */
+}
+.nameIn .inputBox:first-child {
+    margin-right: 20px;
+} 
+form input {
+    width: 98%;
+    border: none;
+    border-color: inherit;
+    padding: 0%;
+    height: 50%;
+    border-radius: 8px;
+    color: var(--fontGray);
+    padding: 2px 5px;
+    font-size: 1em;
+}
+form input:focus {
+    border: green 1px solid;
+    outline: 0px;
+}
+
+form label {
+    font-size: 0.875em;
+    color: var(--fontGrayW);
+}
+
+button {
+    background-color: var(--bgBlue);
+    color: var(--white);
+    width: 49%;
+ 
+}
+p a {
+    color: var(--bgBlue);
+}
+.text {
+    right: 7.75%;
+    bottom: 17.9%;
+    font-size: 2em;
+    line-height: 2.38%;
+    color: var(--white);
+}
+
+@media only screen and (max-width: 885px){
+    .signPic {
+        border-radius: 0 0 0;
+        /* width: 57%; */
+        /* background-attachment: fixed; */
+        /* min-height: 100vh; */
+        /* height: 100%; */ 
+    }
+    .signUp {
+        width: 50%;
+        margin: auto;
+        /* margin-top: 2px; */
+    }
+    .signLogo {
+        font-size: 2em;
+    }
+    
+}
