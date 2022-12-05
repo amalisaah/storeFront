@@ -9,18 +9,9 @@ const  Login = ()=> {
                 <div className='signUp'>
                     <h1>Login</h1>
                     <form className='' action="" method="" automcomplete='on' >
-                        {/* <div className='nameIn'>
-                            <div className='inputBox'>
-                                <label for="fname">First Name</label><br/>
-                                <input type="text" id="fname" name="fname" required/><br/>
-                            </div>
-                            <div className='inputBox'>
-                                <label for="lname">Last Name</label><br/>
-                                <input type="text" id="lname" name="lname" required/><br/>
-                            </div>
-                        </div> */}
 
-                        <div className='inputBox'>
+
+                        {/* <div className='inputBox'>
                             <label for="email">Email</label><br/>
                             <input type="email" id="email" name="email" required/><br/>
                         </div>
@@ -32,7 +23,11 @@ const  Login = ()=> {
                         <div className='loginSubmit'>
                             <button> <a href='' >Forgot Password</a> </button>
                             <input type="submit" value="Create Account" required />
-                        </div>
+                        </div> */}
+                        {/* <Input type="email" id="email" name="email"  label='Email' onChange={handleChange} value={value.email} pattern='^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$' onBlur={handleBlur}  />
+                        {error && <p role='alert' className='text-red-600' >input a valid email</p>}
+                        <Input type="password" id="pwd" name="pwd"  label='Password' onChange={handleChange} value={value.pwd} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" onBlur={handleBlur}  />
+                        <Button/> */}
                         
                         <p> Not a member? <a href='#'>Sign up</a> </p>
                     </form>

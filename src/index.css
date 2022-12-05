@@ -62,3 +62,7 @@ button {
 input[type=submit]:hover {
   cursor: pointer;
 }
+form input:focus {
+  border: none;
+  outline: 0px;
+}
