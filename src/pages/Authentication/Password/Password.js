@@ -1,19 +1,33 @@
 import React from "react";
 import './Password.css';
 import Input from "../Components/Input";
-import Button from "../Components/Button";
+import Submit from "../Components/Submit";
 import OuterDiv from "../Components/OuterDiv";
+import { useNavigate } from "react-router";
+import Logo from "../Components/Logo";
 
 const  Password = (props)=> {
+
+    const navigate = useNavigate();
+
+    function handleSubmit(e){
+        e.preventDefault();
+        console.log(props.value)
+        if(props.value.newPassword===props.value.confirmPassword){
+            props.handleSubmit('');
+            navigate('../cmail')
+        }
+        
+    }
     return (
         <>
         <main className='passwd'>
-            <div className="logo">Storefront</div>
+            <Logo />
             <OuterDiv heading='change password' >
-                <form className='' onSubmit={props.handleSubmit} >
-                    <Input type="password" id="pwd" name="pwd" label='New Password' onChange={props.handleChange} value={props.value.pwd} onBlur={props.handleBlur} pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$' />
-                    <Input type="password" id="Confirmpwd" name="pwd" label='Confirm Password' onChange={props.handleChange} value={props.value.pwd} onBlur={props.handleBlur}  />   
-                    <Button value='save' link='../cmail'  />
+                <form className='' onSubmit={handleSubmit} >
+                    <Input type="password" id="pwd" name="newPassword" label='New Password' onChange={props.handleChange} value={props.value.newPassword} onBlur={props.handleBlur} pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$' />
+                    <Input type="password" id="Confirmpwd" name="confirmPassword" label='Confirm Password' onChange={props.handleChange} value={props.value.confirmPassword} onBlur={props.handleBlur}  />   
+                    <Submit value='save'  />
                     
                 </form>
             </OuterDiv>

@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from "react";
-import {Routes,Route} from 'react-router-dom'
+import React, {useContext, useEffect, useState} from "react";
+import {Routes,Route, useLocation} from 'react-router-dom';
+import axios from "axios";
+import { LoginContext } from "../../Context/LoginContext";
 import Cmail from "./Cmail/Cmail";
 import Login from "./Login/Login";
 import Password from "./Password/Password";
@@ -8,14 +10,32 @@ import SignUp from "./SignUp/SignUp";
 
 const  Authentication = ()=> {
 
+        /*CHANGE TEST AND BACKGROUND*/
+        function changeBackground(){
+            const id=document.getElementById('signP');
+            if(id){
+                const images=["bg1.jpg","bg2.jpg","bg3.jpg","bg4.jpg","bg5.jpg","bg6.jpg","bg7.jpg"]
+                const index = Math.floor((Math.random() * 7));
+                const src=process.env.PUBLIC_URL + "/images/";
+                const url=`url(${src}${images[index]})`
+                id.style.backgroundImage=url;
+            }
+            
+        }
+        useEffect(()=>{
+            const intervalId=setInterval(() => {
+                changeBackground();    
+            }, 15000);
+            return ()=>{clearInterval(intervalId)}
+            
+        },[])
+
+
     /*PATTERN*/
     // const pattern={ mail:'^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$',
     //                 pwd:"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
     //             }
-    const pattern={ mail:"'^[a-zA-Z0-9]+([\.-]?[a-zA-Z0-9]+)*@[a-zA-Z0-9]+([\.-]?[a-zA-Z0-9]+)*(\.[a-zA-Z0-9]{2,3})+$'",
-                    // pwd:"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                }
-
+  
     /*CHANGE FORM BTN PERSONAL AND BUSINESS*/
     const [personal,setPersonal]=useState(true)
     function changeForm(){
@@ -48,35 +68,29 @@ const  Authentication = ()=> {
     }
 
 
-    /*CHANGE TEST AND BACKGROUND*/
-    function changeBackground(){
-        const id=document.getElementById('signP');
-        if(id){
-            const images=["bg1.jpg","bg2.jpg","bg3.jpg","bg4.jpg","bg5.jpg","bg6.jpg","bg7.jpg"]
-            const index = Math.floor((Math.random() * 7));
-            const src=process.env.PUBLIC_URL + "/images/";
-            const url=`url(${src}${images[index]})`
-            id.style.backgroundImage=url;
-        }
-        
-    }
-    useEffect(()=>{
-        const intervalId=setInterval(() => {
-            changeBackground();    
-        }, 15000);
-        return ()=>{clearInterval(intervalId)}
-        
-    },[])
+
 
     /*HANDLE FORM SUBMISSION*/
-    function handleSubmit(e){
-        e.preventDefault();
+    const {setUser} = useContext(LoginContext)
+    const baseUrl=''
+    function handleSubmit(role){
+        // e.preventDefault();
         if(!error){
-            console.log(value)
+            console.log(value,role)
             setValue({})
+            // async()=>{
+            //     const url=`${baseUrl}${role}`
+            //     const response = await axios.post(url,value);
+            //     setUser(response)
+            // }();
         }
         
     }
+
+    /*CLEARS VALUES ON LEAVING THE PAGE*/
+    const location =useLocation()
+    useEffect(()=>{ setValue({}) },[location])
+
 
     /*VERIFY PASSWORD CHANGE*/
     // const[verify,setVerify]=useState({rec:'24568',inp:''})
@@ -87,11 +101,11 @@ const  Authentication = ()=> {
 
     return (
         <Routes>
-            <Route path='/signup' element={<SignUp value={value} pattern={pattern} handleChange={handleChange} handleBlur={handleBlur} error={error} personal={personal} changeForm={changeForm} handleSubmit={handleSubmit} />} />
-            <Route index element={<Login value={value} pattern={pattern} handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit}  />} />
-            <Route path="/login" element={<Login value={value} pattern={pattern} handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit} />} />
+            <Route path='/signup' element={<SignUp value={value}  handleChange={handleChange} handleBlur={handleBlur} error={error} personal={personal} changeForm={changeForm} handleSubmit={handleSubmit} />} />
+            <Route index element={<Login value={value}  handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit}  />} />
+            <Route path="/login" element={<Login value={value} handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit} />} />
             <Route path='/cmail' element={<Cmail/> } />
-            <Route path='/changepassword' element={<Password value={value} pattern={pattern} handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit}/>} />
+            <Route path='/changepassword' element={<Password value={value}  handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit}/>} />
         </Routes>
     )
 };
