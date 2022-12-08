@@ -9,8 +9,7 @@ body {
     margin: 0;
 }
 .signPic {
-    border-radius: 0 40px 40px 0;
-    width: 44%;
+
     background-image: url('../resources/images/Desktop1.jpg');
     transition: all 2s
 }
@@ -19,12 +18,10 @@ body {
     line-height: 89.66px;
 
 }
-.signUp {
-    width: 33%; 
-}
+
 .signUp h1 {
 
-    margin-bottom: 4.6%;
+    /* margin-bottom: 4.6%; */
     
 }
 form>div {
@@ -45,7 +42,7 @@ form .inputBox {
     margin-right: 20px;
 } 
 form input {
-    width: 98%;
+    /* width: 98%; */
     border: none;
     border-color: inherit;
     padding: 0%;
@@ -62,7 +59,7 @@ form label {
     color: var(--fontGrayW);
 }
 
-button {
+button,input[type='submit'] {
     background-color: var(--bgBlue);
     color: var(--white);
     width: 49%;

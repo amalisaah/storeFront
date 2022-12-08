@@ -1,30 +1,22 @@
 import React from "react";
 import './Password.css';
+import Input from "../Components/Input";
+import Button from "../Components/Button";
+import OuterDiv from "../Components/OuterDiv";
 
-const  Password = ()=> {
+const  Password = (props)=> {
     return (
         <>
         <main className='passwd'>
-        <div className="logo">Storefront</div>
-            <div className='signUp password'>
-                <h1>change password</h1>
-                <form className='' action="" method="" automcomplete='on' >
-                    <div className='inputBox'>
-                        <label for="pwd">New Password</label><br/>
-                        <input type="password" id="pwd" name="pwd" required /><br/>
-                    </div>
-                    <div className='inputBox'>
-                        <label for="Confirmpwd">Confirm Password</label><br/>
-                        <input type="password" id="Confirmpwd" name="pwd" required /><br/>
-                    </div>
-
-                    {/* <div className='loginSubmit'> */}
-                        {/* <button> <a href='' >Forgot Password</a> </button> */}
-                        <input type="submit" value="Save" required />
-                    {/* </div> */}
+            <div className="logo">Storefront</div>
+            <OuterDiv heading='change password' >
+                <form className='' onSubmit={props.handleSubmit} >
+                    <Input type="password" id="pwd" name="pwd" label='New Password' onChange={props.handleChange} value={props.value.pwd} onBlur={props.handleBlur} pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$' />
+                    <Input type="password" id="Confirmpwd" name="pwd" label='Confirm Password' onChange={props.handleChange} value={props.value.pwd} onBlur={props.handleBlur}  />   
+                    <Button value='save' link='../cmail'  />
                     
                 </form>
-            </div>
+            </OuterDiv>
         </main>
         </>
     )

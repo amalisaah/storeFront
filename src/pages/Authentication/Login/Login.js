@@ -1,43 +1,31 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import './Login.css';
+import Button from "../Components/Button";
+import Input from "../Components/Input";
+import Picture from "../Components/Picture";
+import OuterDiv from "../Components/OuterDiv";
 
-const  Login = ()=> {
+const  Login = (props)=> {
+    // console.log(typeof props.pattern.mail)
     return (
         <>
-            <main className="sign login">
-
-                <div className='signUp'>
-                    <h1>Login</h1>
-                    <form className='' action="" method="" automcomplete='on' >
-
-
-                        {/* <div className='inputBox'>
-                            <label for="email">Email</label><br/>
-                            <input type="email" id="email" name="email" required/><br/>
+            <main className="sign login flex justify-between h-screen">
+                
+                <OuterDiv heading='Login'>
+                    <form className='' onSubmit={props.handleSubmit}  >
+                        <Input type="email" id="email" name="email"  label='Email' onChange={props.handleChange} value={props.value.email} pattern='^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$' onBlur={props.handleBlur}  />
+                        {props.error && <p role='alert' className='text-red-600' >input a valid email</p>}
+                        <Input type="password" id="pwd" name="pwd"  label='Password' onChange={props.handleChange} value={props.value.pwd} pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$' onBlur={props.handleBlur}  />
+                        <div className='loginSubmit flex justify-between'>
+                            <Button value='Forgot Password' link='/authentication/changepassword' />                       
+                            <Button value='Log In' />                       
                         </div>
-                        <div className='inputBox'>
-                            <label for="pwd">Password</label><br/>
-                            <input type="password" id="pwd" name="pwd" required /><br/>
-                        </div>
-
-                        <div className='loginSubmit'>
-                            <button> <a href='' >Forgot Password</a> </button>
-                            <input type="submit" value="Create Account" required />
-                        </div> */}
-                        {/* <Input type="email" id="email" name="email"  label='Email' onChange={handleChange} value={value.email} pattern='^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$' onBlur={handleBlur}  />
-                        {error && <p role='alert' className='text-red-600' >input a valid email</p>}
-                        <Input type="password" id="pwd" name="pwd"  label='Password' onChange={handleChange} value={value.pwd} pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$" onBlur={handleBlur}  />
-                        <Button/> */}
-                        
-                        <p> Not a member? <a href='#'>Sign up</a> </p>
+                        <p> Not a member? <Link to='/authentication/signup'>Sign up</Link> </p>
                     </form>
-                </div>
-
-                <div className='signPic'>
-                    {/* <img src={img1} alt="" />  */}
-                    <div className='signLogo'>Storefront</div>
-                    <div className='text'>Well created UI Design</div>
-                </div>
+                </OuterDiv>
+                <Picture/>
+                
             </main>
         </>
     )
