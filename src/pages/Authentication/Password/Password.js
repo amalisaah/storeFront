@@ -12,11 +12,12 @@ const  Password = (props)=> {
 
     function handleSubmit(e){
         e.preventDefault();
-        console.log(props.value)
+        
         if(props.value.newPassword===props.value.confirmPassword){
             props.handleSubmit('');
-            navigate('../cmail')
-        }
+            navigate('/authentication/login')
+        }else console.log("password doesn't match")
+
         
     }
     return (

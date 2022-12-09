@@ -28,8 +28,8 @@ form>div {
 } 
 form input {
     /* width: 98%; */
-    border: none;
-    border-color: inherit;
+    /* border: none; */
+    /* border-color: inherit; */
     padding: 0%;
     height: 50%;
     border-radius: 8px;

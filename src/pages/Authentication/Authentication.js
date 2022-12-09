@@ -6,6 +6,7 @@ import Cmail from "./Cmail/Cmail";
 import Login from "./Login/Login";
 import Password from "./Password/Password";
 import SignUp from "./SignUp/SignUp";
+import FactorAuth from "./FactorAuth/FactorAuth";
 
 
 const  Authentication = ()=> {
@@ -74,7 +75,6 @@ const  Authentication = ()=> {
     const {setUser} = useContext(LoginContext)
     const baseUrl=''
     function handleSubmit(role){
-        // e.preventDefault();
         if(!error){
             console.log(value,role)
             setValue({})
@@ -104,8 +104,9 @@ const  Authentication = ()=> {
             <Route path='/signup' element={<SignUp value={value}  handleChange={handleChange} handleBlur={handleBlur} error={error} personal={personal} changeForm={changeForm} handleSubmit={handleSubmit} />} />
             <Route index element={<Login value={value}  handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit}  />} />
             <Route path="/login" element={<Login value={value} handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit} />} />
-            <Route path='/cmail' element={<Cmail/> } />
+            <Route path='/cmail' element={<Cmail value={value} handleChange={handleChange} handleBlur={handleBlur} handleSubmit={handleSubmit} /> } />
             <Route path='/changepassword' element={<Password value={value}  handleChange={handleChange} handleBlur={handleBlur} error={error} handleSubmit={handleSubmit}/>} />
+            <Route path='/auth' element={<FactorAuth /> }>
         </Routes>
     )
 };

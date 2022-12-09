@@ -1,7 +1,5 @@
 import React from "react";
 import './SignUp.css';
-// import img1 from '../resources/images/Desktop1.jpg'
-// import Button from '../Components/Button';
 import Form from "../Components/Form";
 import Picture from "../Components/Picture";
 
